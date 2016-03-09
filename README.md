@@ -70,9 +70,9 @@ var startingPromise = function(value) {
 };
 
 var endingPromise = function(value) {
-console.log('Ending with value', value);
+	console.log('Ending with value', value);
 
-return value;
+	return value;
 };
 
 //Run normally again
