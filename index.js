@@ -4,11 +4,12 @@ var promiseLoop = function(resolvePromise, rejectPromise) {
 	rejectPromise = rejectPromise || promiseLoop.defaultRejectPromise;
 
 	return function internalPromiseLoop(value) {
-		return resolvePromise(value).then(function(nextValue) {
-			return internalPromiseLoop(nextValue);
-		}).catch(function(endValue) {
-			return rejectPromise(endValue);
-		});
+		return resolvePromise(value)
+			.then(function(nextValue) {
+				return internalPromiseLoop(nextValue);
+			}, function(endValue) {
+				return rejectPromise(endValue);
+			});
 	}
 };
 
